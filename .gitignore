@@ -1,0 +1,32 @@
+# LaTeX generated files
+*.aux
+*.log
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.blg
+*.bbl
+*.idx
+*.ind
+*.ilg
+
+# Bibliography auxiliary files
+*.bcf
+*.xml
+*.nav
+*.out
+*.snm
+*.vrb
+*.dvi
+*.ps
+*.spl
+
+# Backup files
+*.backup
+*.tex~
+
+# PDF files
+*.pdf
