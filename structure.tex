@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structure specification file
+%
+% The original file (Wilson Resume/CV) has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+% Use A4 paper and set margins
+\usepackage[a4paper, hmargin=25mm, vmargin=30mm, top=20mm]{geometry}
+
+% Use the Erewhon font
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+
+% Required for inputting international characters
+% Not needed with XeLaTeX, which is needed to use the Erewhon font.
+%\usepackage[utf8]{inputenc}
+
+% Package that makes latex aware of the languages used in the text
+\usepackage[brazil,english]{babel}
+
+% Output font encoding for international characters
+\usepackage[T1]{fontenc}
+
+% Customize the header and footer
+\usepackage{fancyhdr}
+
+% Required for calculating the number of pages in the document
+\usepackage{lastpage}
+
+% Control sequences
+\usepackage{etoolbox}
+
+% Colors for links, text and headings
+\usepackage[pdfborder={0 0 0}]{hyperref}
+
+% Required for specification of custom fonts
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[Path = ./fonts/,
+Extension = .otf,
+BoldFont = Erewhon-Bold,
+ItalicFont = Erewhon-Italic,
+BoldItalicFont = Erewhon-BoldItalic,
+SmallCapsFeatures = {Letters = SmallCaps}
+]{Erewhon-Regular}
+
+ % Required for custom colors
+%\usepackage{color}
+%\definecolor{slateblue}{rgb}{0.17,0.22,0.34}
+
+%\usepackage{sectsty} % Allows customization of titles
+%\sectionfont{\color{slateblue}} % Color section titles
+
+% Suppress section numbering
+\setcounter{secnumdepth}{0}
+
+% Define a custom page style
+\fancypagestyle{plain}{\fancyhf{}\cfoot{\thepage\ of \pageref{LastPage}}}
+% Use the custom page style through the document
+\pagestyle{plain}
+% Disable the default header rule
+\renewcommand{\headrulewidth}{0pt}
+ % Disable the default footer rule
+\renewcommand{\footrulewidth}{0pt}
+
+ % Stop paragraph indentation
+\setlength\parindent{0pt}
+
+% Non-indenting itemize
+\newenvironment{itemize-noindent}
+{\setlength{\leftmargini}{1em}\begin{itemize}}
+{\end{itemize}}
+
+% Text width for tabbing environments
+\newlength{\tabwidth}
+\setlength{\tabwidth}{3.5cm}
+\newlength{\smallertextwidth}
+\setlength{\smallertextwidth}{\textwidth}
+\addtolength{\smallertextwidth}{-\tabwidth}
+
+% Custom square bullet point definition
+\newcommand{\sqbullet}{~\vrule height 1ex width .8ex depth -.2ex}
+
+%----------------------------------------------------------------------------------------
+%	MAIN HEADER COMMAND
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\title}[1]{
+{\huge{\textbf{#1}}}\\ % Header section name and color
+\rule{\textwidth}{0.5mm}\\ % Rule under the header
+}
+
+%----------------------------------------------------------------------------------------
+%	JOB COMMAND
+%----------------------------------------------------------------------------------------
+
+\newcommand{\employer}[4]{
+\begin{tabbing}
+\hspace{\tabwidth} \= \kill
+\textbf{#1 - #2} \> \href{#4}{#3}
+\end{tabbing}
+}
+
+\newcommand{\job}[2]{
+\begin{tabbing}
+\hspace{\tabwidth} \= \kill
+\>\+ \textit{#1} \\
+\begin{minipage}{\smallertextwidth}
+\vspace{2mm}
+#2
+\end{minipage}
+\vspace{2mm}
+\end{tabbing}
+}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION COMMAND
+%----------------------------------------------------------------------------------------
+
+\newcommand{\education}[6]{
+\begin{tabbing}
+\hspace{\tabwidth} \= \kill
+\textbf{#1 - #2} \>\+ #3 - \href{#5}{#4} \\
+\ifstrempty{#6}{}{
+\begin{minipage}{\smallertextwidth}
+\vspace{2mm}
+#6
+\vspace{2mm}
+\end{minipage}
+}
+\end{tabbing}
+}
+%----------------------------------------------------------------------------------------
+%	SKILL GROUP COMMAND
+%----------------------------------------------------------------------------------------
+
+\newcommand{\skillgroup}[2]{
+\begin{tabbing}
+\hspace{5mm} \= \kill
+\sqbullet \>\+ \textbf{#1} \\
+\begin{minipage}{\smallertextwidth}
+\vspace{2mm}
+#2
+\end{minipage}
+\end{tabbing}
+}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS GROUP COMMAND
+%-----------------------------------------------------------------------------------------
+
+\newcommand{\interestsgroup}[1]{
+\begin{tabbing}
+\hspace{5mm} \= \kill
+#1
+\end{tabbing}
+\vspace{-10mm}
+}
+
+% Define a custom command for individual interests
+\newcommand{\interest}[1]{\sqbullet \> \textbf{#1}\\[3pt]}
+
+%----------------------------------------------------------------------------------------
+%	TABBED BLOCK COMMAND
+%----------------------------------------------------------------------------------------
+
+\newcommand{\tabbedblock}[1]{
+\begin{tabbing}
+\hspace{2cm} \= \hspace{4cm} \= \kill
+#1
+\end{tabbing}
+}
